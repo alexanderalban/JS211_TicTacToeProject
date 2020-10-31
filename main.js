@@ -42,10 +42,8 @@ const printBoard = () => {
 
 const horizontalWin = () => {
   // Your code here to check for horizontal wins
-  for (let i = 0; i < 3; i++) {
-    if (board[0][0] === playerTurn && board[0][1] === playerTurn && board[0][2] === playerTurn ||
-      board[1][0] === playerTurn && board[1][1] === playerTurn && board[1][2] === playerTurn ||
-      board[2][0] === playerTurn && board[2][1] === playerTurn && board[2][2] === playerTurn) {
+  for (let row = 0; row < 3; row++) {
+    if (board[row][0] === playerTurn && board[row][1] === playerTurn && board[row][2] === playerTurn) {
       return "win";
     }
   }
@@ -53,15 +51,19 @@ const horizontalWin = () => {
 
 const verticalWin = () => {
   // Your code here to check for vertical wins
-}
-
-const diagonalWin = () => {
-  // Your code here to check for diagonal wins
-  for (let i = 0; i < 3; i++) {
-    if (board[0][i] === playerTurn && board[1][i] === playerTurn && board[2][i] === playerTurn) {
+  for (let column = 0; i < 3; i++) {
+    if (board[0][column] === playerTurn && board[1][column] === playerTurn && board[2][column] === playerTurn) {
       return 'win';
     }
   }
+};
+
+
+const diagonalWin = () => {
+  // Your code here to check for diagonal wins
+  if (board[0][0] === playerTurn && board[1][1] === playerTurn && board[2][2] === playerTurn ||
+    board[2][0] === playerTurn && board[1][1] === playerTurn && board[0][2] === playerTurn)
+    return 'win';
 };
 
 const checkForWin = () => {
