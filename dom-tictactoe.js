@@ -44,6 +44,7 @@ const addMarker = (id) => {
   console.log(`*** The current marker is:  ${currentMarker}. ***`);
   console.log(`Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`, row, column);
   document.getElementById(id).innerHTML = currentMarker;
+  document.getElementById("player-turn").innerHTML = "It's " + currentMarker + "'s turn!";
   checkForWin();
 }
 

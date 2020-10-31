@@ -1,7 +1,35 @@
-td{
-  height:150px;
-  width:150px;
+html,
+body {
+  background-image: url(./images/arun-clarke-tictacbuilding-unsplash.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  display: grid;
+  justify-content: center;
+}
+
+.jumbotron {
+  margin: 5% auto;
   text-align: center;
-  border: 5px solid black;
+  font-family: "Gloria Hallelujah", cursive;
+  background-color: white;
+}
+
+td {
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  border: 5px solid white;
   font-size: 100px;
+  font-family: "Permanent Marker", cursive;
+  color: white;
+  background-color: black;
+}
+
+table {
+  margin: auto auto;
 }
