@@ -10,41 +10,54 @@
 
 let currentMarker = 'X'
 let board = [
-  ['','',''],
-  ['','',''],
-  ['','','']
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', '']
 ];
 
 // is called when a square is clicked. "this" = element here
 const handleClick = (element) => {
   // check to see if the square clicked has anything in it, if not continue
   // this prevents an X being changed to an O
-  if(!document.getElementById(element.id).innerHTML){
+  row = parseInt(element.id.charAt(0));
+  column = parseInt(element.id.charAt(2));
+
+  console.log(`The element you clicked on has an id:  ${element.id}`)
+  board[row][column] = currentMarker;
+
+  if (!document.getElementById(element.id).innerHTML) {
     addMarker(element.id)
-    updateBoard(element.id)
-    checkForWin()
   }
-}
+};
 
 const addMarker = (id) => {
   console.log(`We'll place a mark on square: ${id}`)
   // @TODO, Mix & Match. 
   // You will need the following pieces:
-  
+
   // = currentMarker
   // .getElementById(id)
   // document
   // .innerHTML 
-  
+
   // Arrange the above pieces into one a single line of code
-  // to add an X or O to the board to the DOM so it can be scene on the screen.
+  // to add an X or O to the board to the DOM so it can be seen on the screen.
+
+  console.log(`*** The current marker is:  ${currentMarker}. ***`)
+  console.log(`Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`, row, column)
+
+  document.getElementById(id).innerHTML = currentMarker;
+
+
+  checkForWin();
+
 }
 
 // passes the element's id attribute from HTML to be used
 const updateBoard = (id) => {
   // parses the id string into a number then captures the first and last part the newly create number as row & column
   const row = parseInt(id.charAt(0))
-  const column = parseInt(id.charAt(2)) 
+  const column = parseInt(id.charAt(2))
 
   console.log(`you clicked the sq at ${row} and ${column}`)
   console.log(board)
@@ -55,7 +68,7 @@ const updateBoard = (id) => {
 
 const checkForWin = () => {
   // calls each checkForWin possibility and if any are true gives a page alert,
-  if(horizontalWin() || verticalWin() || diagonalWin()) {
+  if (horizontalWin() || verticalWin() || diagonalWin()) {
     // **BONUS** you could make the dismissal of this alert window reset the board...
     window.alert(`Player ${currentMarker} won!`)
   } else {
@@ -66,15 +79,28 @@ const checkForWin = () => {
 
 const horizontalWin = () => {
   // @TODO, Your code here: to check for horizontal wins
-}
+  for (let row = 0; row < 3; row++) {
+    if (board[row][0] === currentMarker && board[row][1] === currentMarker && board[row][2] === currentMarker) {
+      return true;
+    }
+  }
+};
 
 const verticalWin = () => {
   // @TODO, Your code here: to check for vertical wins
-}
+  for (let column = 0; column < 3; column++) {
+    if (board[0][column] === currentMarker && board[1][column] === currentMarker && board[2][column] === currentMarker) {
+      return true;
+    }
+  }
+};
 
 const diagonalWin = () => {
   // @TODO, Your code here: to check for diagonal wins
-}
+  if (board[0][0] === currentMarker && board[1][1] === currentMarker && board[2][2] === currentMarker ||
+    board[2][0] === currentMarker && board[1][1] === currentMarker && board[0][2] === currentMarker)
+    return true;
+};
 
 const changeMarker = () => {
   // ternary operator: if it's an X make it an O, if O make it an X
@@ -83,19 +109,25 @@ const changeMarker = () => {
 
 const resetBoard = () => {
   // sanity check: this tells us the function is being called
-  console.log("the board was cleared!")
-
   // collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp  
-  const squares = document.getElementsByTagName("TD")
-  
   // loops over the HTML Collections and clears out the Xs and Os
-  for (i=0; i<squares.length; i++) {
+  // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
+
+
+  console.log("the board was cleared!")
+  const squares = document.getElementsByTagName("TD")
+  for (i = 0; i < squares.length; i++) {
     console.log(squares[i])
     squares[i].innerHTML = null
+    location.reload();
+    return false;
   }
-  
-  // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
-}
+
+  //*******Added location.reload() to solve a bug where the letters of the board would clear, but
+  //the values from the previous game were retained, meaning the game would still end at the same time.
+  //Now the whole board reloads on restart. */
+
+};
 
 // **BONUSES**
 
