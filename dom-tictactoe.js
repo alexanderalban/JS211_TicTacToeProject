@@ -21,12 +21,10 @@ const handleClick = (element) => {
   // this prevents an X being changed to an O
   row = parseInt(element.id.charAt(0));
   column = parseInt(element.id.charAt(2));
-
   console.log(`The element you clicked on has an id:  ${element.id}`)
   board[row][column] = currentMarker;
-
   if (!document.getElementById(element.id).innerHTML) {
-    addMarker(element.id)
+    addMarker(element.id);
   }
 };
 
@@ -43,28 +41,23 @@ const addMarker = (id) => {
   // Arrange the above pieces into one a single line of code
   // to add an X or O to the board to the DOM so it can be seen on the screen.
 
-  console.log(`*** The current marker is:  ${currentMarker}. ***`)
-  console.log(`Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`, row, column)
-
+  console.log(`*** The current marker is:  ${currentMarker}. ***`);
+  console.log(`Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`, row, column);
   document.getElementById(id).innerHTML = currentMarker;
-
-
   checkForWin();
-
 }
 
 // passes the element's id attribute from HTML to be used
 const updateBoard = (id) => {
   // parses the id string into a number then captures the first and last part the newly create number as row & column
-  const row = parseInt(id.charAt(0))
-  const column = parseInt(id.charAt(2))
-
-  console.log(`you clicked the sq at ${row} and ${column}`)
-  console.log(board)
-
   // @TODO, Your code here: use the above information to change the board variable(array of arrays)
   // HINT: in your browser open up the dev tools -> console
-}
+  const row = parseInt(id.charAt(0));
+  const column = parseInt(id.charAt(2));
+  console.log(`you clicked the sq at ${row} and ${column}`);
+  console.log(board);
+};
+
 
 const checkForWin = () => {
   // calls each checkForWin possibility and if any are true gives a page alert,
@@ -105,7 +98,7 @@ const diagonalWin = () => {
 const changeMarker = () => {
   // ternary operator: if it's an X make it an O, if O make it an X
   currentMarker = currentMarker === "X" ? "O" : "X"
-}
+};
 
 const resetBoard = () => {
   // sanity check: this tells us the function is being called
@@ -113,12 +106,11 @@ const resetBoard = () => {
   // loops over the HTML Collections and clears out the Xs and Os
   // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
 
-
   console.log("the board was cleared!")
   const squares = document.getElementsByTagName("TD")
   for (i = 0; i < squares.length; i++) {
-    console.log(squares[i])
-    squares[i].innerHTML = null
+    console.log(squares[i]);
+    squares[i].innerHTML = null;
     location.reload();
     return false;
   }
