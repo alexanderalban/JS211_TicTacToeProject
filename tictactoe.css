@@ -1,3 +1,5 @@
+/* Parallax Scrolling Settings */
+
 html,
 body {
   background-image: url(./images/arun-clarke-tictacbuilding-unsplash.jpg);
@@ -6,6 +8,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* Primary site settings */
 
 main {
   display: grid;

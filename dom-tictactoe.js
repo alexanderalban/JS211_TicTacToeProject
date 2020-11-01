@@ -15,6 +15,7 @@ let board = [
   ['', '', '']
 ];
 
+
 // is called when a square is clicked. "this" = element here
 const handleClick = (element) => {
   // check to see if the square clicked has anything in it, if not continue
