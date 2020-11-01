@@ -8,7 +8,7 @@
 // next to each @TODO you will find tasks that need to be finished
 // 4. GET THIS GAME WORKING!!
 
-let currentMarker = 'X'
+let currentMarker = 'X';
 let board = [
   ['', '', ''],
   ['', '', ''],
@@ -28,6 +28,31 @@ const handleClick = (element) => {
   }
 };
 
+const resetBoard = () => {
+  // sanity check: this tells us the function is being called
+  // collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp  
+  // loops over the HTML Collections and clears out the Xs and Os
+  // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
+  board =
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', ''];
+  console.log("the board was cleared!")
+  const squares = document.getElementsByTagName("TD")
+  for (i = 0; i < squares.length; i++) {
+    console.log(squares[i]);
+    squares[i].innerHTML = "";
+    location.reload();
+    return false;
+  }
+
+  //*******Added location.reload() to solve a bug where the letters of the board would clear, but
+  //the values from the previous game were retained, meaning the game would still end at the same 
+  //time, or would get stuck in a "X won the game!" loop.
+  //Now the whole page reloads on restart. */
+
+};
+
 const addMarker = (id) => {
   console.log(`We'll place a mark on square: ${id}`)
   // @TODO, Mix & Match. 
@@ -44,8 +69,8 @@ const addMarker = (id) => {
   console.log(`*** The current marker is:  ${currentMarker}. ***`);
   console.log(`Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`, row, column);
   document.getElementById(id).innerHTML = currentMarker;
-  document.getElementById("player-turn").innerHTML = "It's " + currentMarker + "'s turn!";
   checkForWin();
+  document.getElementById("player-turn").innerHTML = "It's " + currentMarker + "'s turn!";
 }
 
 // passes the element's id attribute from HTML to be used
@@ -64,7 +89,8 @@ const checkForWin = () => {
   // calls each checkForWin possibility and if any are true gives a page alert,
   if (horizontalWin() || verticalWin() || diagonalWin()) {
     // **BONUS** you could make the dismissal of this alert window reset the board...
-    window.alert(`Player ${currentMarker} won!`)
+    window.alert(`Player ${currentMarker} won!`);
+    resetBoard();
   } else {
     // if no win, change the marker from X to O, or O to X for the next player.
     changeMarker()
@@ -101,31 +127,10 @@ const changeMarker = () => {
   currentMarker = currentMarker === "X" ? "O" : "X"
 };
 
-const resetBoard = () => {
-  // sanity check: this tells us the function is being called
-  // collects all of the "td"s into an HTML Collection: https://www.w3schools.com/jsref/dom_obj_htmlcollection.asp  
-  // loops over the HTML Collections and clears out the Xs and Os
-  // @TODO, Your code here: make sure to reset the array of arrays to empty for a new game
-
-  console.log("the board was cleared!")
-  const squares = document.getElementsByTagName("TD")
-  for (i = 0; i < squares.length; i++) {
-    console.log(squares[i]);
-    squares[i].innerHTML = null;
-    location.reload();
-    return false;
-  }
-
-  //*******Added location.reload() to solve a bug where the letters of the board would clear, but
-  //the values from the previous game were retained, meaning the game would still end at the same time.
-  //Now the whole board reloads on restart. */
-
-};
-
 // **BONUSES**
 
-// 1. Display the current player's turn
+// 1. Display the current player's turn // Done!
 // 2. Count number of wins for each player and display them
 // 3. Reset the number of wins
-// 4. Clear the board on alert window dismissal
-// 5. Add players names and display who wins, i.e. "Congrats Emily, you won with 0s!"
+// 4. Clear the board on alert window dismissal // Done!
+// 5. Add players names and display who wins, i.e. "Congrats Emily, you won with Os!"

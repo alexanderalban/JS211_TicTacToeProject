@@ -16,14 +16,14 @@ main {
   margin: 5% auto;
   text-align: center;
   font-family: "Gloria Hallelujah", cursive;
-  background-color: white;
+  background-color: rgb(255, 255, 255, 0.9);
 }
 
 td {
   height: 150px;
   width: 150px;
   text-align: center;
-  border: 5px solid white;
+  border: 5px solid rgb(255, 255, 255, 0.7);
   font-size: 100px;
   font-family: "Permanent Marker", cursive;
   color: white;
