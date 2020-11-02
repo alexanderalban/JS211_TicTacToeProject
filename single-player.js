@@ -34,7 +34,7 @@ const handleClick = (element) => {
 
 };
 
-// This is the function that let's the computer AI run
+//////////********This is the function that let's the computer AI run
 
 const computerTurn = (row, column) => {
     if (endGame === false) {
