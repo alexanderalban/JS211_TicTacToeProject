@@ -27,8 +27,8 @@ const handleClick = (element) => {
     board[row][column] = currentMarker;
     if (!document.getElementById(element.id).innerHTML) {
         addMarker(element.id);
-        computerTurn();
     }
+    computerTurn();
 };
 
 // This is the function that let's the computer AI run

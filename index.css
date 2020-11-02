@@ -1,3 +1,5 @@
+/* Parallax Background Settings */
+
 html {
   background-image: url(./images/hendri-sabri-x-building-unsplash.jpg);
   background-attachment: fixed;
@@ -5,6 +7,8 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* Main Content Settings */
 
 main {
   display: grid;
@@ -32,6 +36,8 @@ h2 {
   padding: 10pt;
 }
 
+/* Link settings */
+
 #multiplayer {
   grid-column: 1 / 2;
 }
@@ -55,6 +61,8 @@ h2 {
   transform: scale(1.5);
   background-color: rgb(16, 23, 16, 0.8);
 }
+
+/* Reactive Settings for Phone (Tablet seems fine) */
 
 @media (max-width: 600px) {
   main {
