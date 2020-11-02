@@ -55,3 +55,20 @@ h2 {
   transform: scale(1.5);
   background-color: rgb(16, 23, 16, 0.8);
 }
+
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  h1,
+  h2,
+  #multiplayer,
+  #single-player {
+    grid-column: 1 / 2;
+  }
+
+  .intro-link {
+    margin-top: 25pt;
+  }
+}
