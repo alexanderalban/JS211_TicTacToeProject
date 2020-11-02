@@ -1,0 +1,57 @@
+html {
+  background-image: url(./images/hendri-sabri-x-building-unsplash.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  justify-items: center;
+}
+
+h1,
+h2 {
+  grid-column: 2 / 3;
+  font-family: "Gloria Hallelujah", cursive;
+  border-radius: 25pt;
+  background-color: rgb(16, 23, 16, 0.5);
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 45pt;
+}
+
+h2 {
+  font-size: 30pt;
+  padding: 10pt;
+}
+
+#multiplayer {
+  grid-column: 1 / 2;
+}
+
+#single-player {
+  grid-column: 3 / 4;
+}
+
+.intro-link {
+  font-size: 25pt;
+  background-color: rgb(16, 23, 16, 0.5);
+  padding: 25pt;
+  border-radius: 50pt;
+  color: white;
+  font-family: "Gloria Hallelujah", cursive;
+  text-decoration: none;
+  transition: 0.4s ease-in-out;
+}
+
+.intro-link:hover {
+  transform: scale(1.5);
+  background-color: rgb(16, 23, 16, 0.8);
+}

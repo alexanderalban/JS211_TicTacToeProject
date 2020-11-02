@@ -15,6 +15,7 @@ let board = [
   ['', '', '']
 ];
 
+endGame = false;
 
 // is called when a square is clicked. "this" = element here
 const handleClick = (element) => {
@@ -26,6 +27,19 @@ const handleClick = (element) => {
   board[row][column] = currentMarker;
   if (!document.getElementById(element.id).innerHTML) {
     addMarker(element.id);
+    computerTurn();
+  }
+};
+
+// This is the function that let's the computer AI run
+
+const computerTurn = (row, column) => {
+  if (endGame === false) {
+    row = Math.floor(Math.random() * 3);
+    column = Math.floor(Math.random() * 3);
+    if (board[row][column] === '') {
+      addMarker(row + "-" + column);
+    }
   }
 };
 
@@ -55,15 +69,12 @@ const resetBoard = () => {
 };
 
 const addMarker = (id) => {
-  console.log(`We'll place a mark on square: ${id}`)
   // @TODO, Mix & Match. 
   // You will need the following pieces:
-
   // = currentMarker
   // .getElementById(id)
   // document
   // .innerHTML 
-
   // Arrange the above pieces into one a single line of code
   // to add an X or O to the board to the DOM so it can be seen on the screen.
 
@@ -89,11 +100,12 @@ const updateBoard = (id) => {
 const checkForWin = () => {
   // calls each checkForWin possibility and if any are true gives a page alert,
   if (horizontalWin() || verticalWin() || diagonalWin()) {
-    // **BONUS** you could make the dismissal of this alert window reset the board...
+    // **BONUS** you could make the dismissal of this alert window reset the board....
+    // if no win, change the marker from X to O, or O to X for the next player.
     window.alert(`Player ${currentMarker} won!`);
+    endGame === true;
     resetBoard();
   } else {
-    // if no win, change the marker from X to O, or O to X for the next player.
     changeMarker()
   }
 }
@@ -124,8 +136,11 @@ const diagonalWin = () => {
 };
 
 const changeMarker = () => {
-  // ternary operator: if it's an X make it an O, if O make it an X
-  currentMarker = currentMarker === "X" ? "O" : "X"
+  if (currentMarker === "X") {
+    currentMarker = "O"
+  } else {
+    currentMarker = "X"
+  }
 };
 
 // **BONUSES**
