@@ -21,14 +21,17 @@ endGame = false;
 const handleClick = (element) => {
     // check to see if the square clicked has anything in it, if not continue
     // this prevents an X being changed to an O
-    row = parseInt(element.id.charAt(0));
-    column = parseInt(element.id.charAt(2));
+
     console.log(`The element you clicked on has an id:  ${element.id}`)
-    board[row][column] = currentMarker;
+
     if (!document.getElementById(element.id).innerHTML) {
+        row = parseInt(element.id.charAt(0));
+        column = parseInt(element.id.charAt(2));
+        board[row][column] = currentMarker;
         addMarker(element.id);
+        computerTurn();
     }
-    computerTurn();
+
 };
 
 // This is the function that let's the computer AI run
@@ -95,7 +98,6 @@ const updateBoard = (id) => {
     console.log(`you clicked the sq at ${row} and ${column}`);
     console.log(board);
 };
-
 
 const checkForWin = () => {
     // calls each checkForWin possibility and if any are true gives a page alert,
