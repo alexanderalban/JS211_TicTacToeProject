@@ -9,13 +9,14 @@
 // 4. GET THIS GAME WORKING!!
 
 let currentMarker = 'X';
+let endGame = false;
 let board = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']
 ];
 
-endGame = false;
+
 
 // is called when a square is clicked. "this" = element here
 const handleClick = (element) => {
