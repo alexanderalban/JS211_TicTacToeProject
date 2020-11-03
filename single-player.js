@@ -10,6 +10,7 @@
 
 let currentMarker = 'X';
 let endGame = false;
+let correctMove = false;
 let board = [
     ['', '', ''],
     ['', '', ''],
@@ -37,12 +38,16 @@ const handleClick = (element) => {
 
 //////////********This is the function that let's the computer AI run
 
-const computerTurn = (row, column) => {
+const computerTurn = () => {
     if (endGame === false) {
-        row = Math.floor(Math.random() * 3);
-        column = Math.floor(Math.random() * 3);
-        if (board[row][column] === '') {
-            addMarker(row + "-" + column);
+        while (correctMove === false) {
+            let row = Math.floor(Math.random() * 3);
+            let column = Math.floor(Math.random() * 3);
+            if (board[row][column] === '') {
+                console.log("COMPUTER", row, column);
+                addMarker(row + "-" + column);
+                correctMove = true;
+            }
         }
     }
 };
