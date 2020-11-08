@@ -38,6 +38,8 @@ const handleClick = (element) => {
 
 //////////********This is the function that let's the computer AI run
 
+let takenMoves = [];
+
 const computerTurn = () => {
     if (endGame === false) {
         while (correctMove === false) {
@@ -47,10 +49,26 @@ const computerTurn = () => {
                 console.log("COMPUTER", row, column);
                 addMarker(row + "-" + column);
                 correctMove = true;
+            } else if (board[row][column] !== '') {
+                console.log("Computer", row, column);
+                takenMoves.push([row, column]);
+                console.log(takenMoves);
+                board.filter(takenFilter);
             }
         }
     }
+    correctMove = false;
 };
+
+///******This function is designed to filter out taken spaces on the board to help AI logic
+
+let takenFilter = () => {
+    for (i = 0; i < board.length; i++) {
+        if (board[i] !== "") {
+            return board[i];
+        }
+    }
+}
 
 const resetBoard = () => {
     // sanity check: this tells us the function is being called
@@ -112,6 +130,7 @@ const checkForWin = () => {
         // if no win, change the marker from X to O, or O to X for the next player.
         window.alert(`Player ${currentMarker} won!`);
         endGame === true;
+        correctMove = true;
         resetBoard();
     } else {
         changeMarker()
