@@ -42,7 +42,7 @@ let takenMoves = [];
 
 const computerTurn = () => {
     if (endGame === false) {
-        while (correctMove === false) {
+        while (correctMove === false && currentMarker === "O") {
             let row = Math.floor(Math.random() * 3);
             let column = Math.floor(Math.random() * 3);
             if (board[row][column] === '') {
